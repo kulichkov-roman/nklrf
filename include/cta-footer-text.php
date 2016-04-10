@@ -1,0 +1,1 @@
+<p><strong>Comes out with 12 predefined color schemes.</strong> Or choose your own colors without making any harm to your website with a colors only CSS file.</p>

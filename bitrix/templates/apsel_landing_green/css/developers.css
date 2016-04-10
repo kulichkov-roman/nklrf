@@ -1,0 +1,12 @@
+.footer_left {
+    width: 30%;
+    float: left;
+}
+.footer_center {
+    width: 40%;
+    float: left;
+}
+.footer_right {
+    width: 30%;
+    float: left;
+}
