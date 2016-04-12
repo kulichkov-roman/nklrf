@@ -26,3 +26,5 @@
 		)
 	)
 );
+
+\Bitrix\Main\Loader::includeModule('tpic');
