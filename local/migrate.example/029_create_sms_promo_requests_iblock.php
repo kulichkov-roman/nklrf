@@ -4,7 +4,7 @@
  *
  * @global $APPLICATION CMain
  */
-use Quetzal\Tools\Data\Migration\Bitrix\AbstractIBlockMigration;
+use Your\Tools\Data\Migration\Bitrix\AbstractIBlockMigration;
 
 define('BX_BUFFER_USED', true);
 define('NO_KEEP_STATISTIC', true);
@@ -41,7 +41,7 @@ class CreateSMSPromoRequestsIBlockMigration extends AbstractIBlockMigration
 	 */
 	public function up()
 	{
-		$logger = new \Quetzal\Tools\Logger\EchoLogger();
+		$logger = new \Your\Tools\Logger\EchoLogger();
 
 		try {
 			$this->createIBlock(
@@ -61,7 +61,7 @@ class CreateSMSPromoRequestsIBlockMigration extends AbstractIBlockMigration
 			$logger->log(
 				sprintf('IBlock has been created. Id: "%s". Add to "smsPromoRequestsIBlockId"', $this->iblockId)
 			);
-		} catch (\Quetzal\Exception\Data\Migration\MigrationException $exception) {
+		} catch (\Your\Exception\Data\Migration\MigrationException $exception) {
 			$logger->log(sprintf('ERROR: %s', $exception->getMessage()));
 		}
 	}
@@ -71,7 +71,7 @@ class CreateSMSPromoRequestsIBlockMigration extends AbstractIBlockMigration
 	 */
 	public function down()
 	{
-		$logger = new \Quetzal\Tools\Logger\EchoLogger();
+		$logger = new \Your\Tools\Logger\EchoLogger();
 
 		$this->deleteIBlock(EnvironmentHelper::getParam('smsPromoRequestsIBlockId'));
 

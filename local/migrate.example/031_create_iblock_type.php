@@ -4,7 +4,7 @@
  *
  * @global $APPLICATION CMain
  */
-use Quetzal\Tools\Data\Migration\Bitrix\AbstractIBlockMigration;
+use Your\Tools\Data\Migration\Bitrix\AbstractIBlockMigration;
 
 define('BX_BUFFER_USED', true);
 define('NO_KEEP_STATISTIC', true);
@@ -41,7 +41,7 @@ class CreateInfoIBlockTypeMigration extends AbstractIBlockMigration
 	 */
 	public function up()
 	{
-		$logger = new \Quetzal\Tools\Logger\EchoLogger();
+		$logger = new \Your\Tools\Logger\EchoLogger();
 
 		try {
 			$this->createIBlockType(
@@ -62,7 +62,7 @@ class CreateInfoIBlockTypeMigration extends AbstractIBlockMigration
 			);
 
 			$logger->log('IBlock type "info" has been created');
-		} catch (\Quetzal\Exception\Data\Migration\MigrationException $exception) {
+		} catch (\Your\Exception\Data\Migration\MigrationException $exception) {
 			$logger->log(sprintf('ERROR: %s', $exception->getMessage()));
 		}
 	}
@@ -72,13 +72,13 @@ class CreateInfoIBlockTypeMigration extends AbstractIBlockMigration
 	 */
 	public function down()
 	{
-		$logger = new \Quetzal\Tools\Logger\EchoLogger();
+		$logger = new \Your\Tools\Logger\EchoLogger();
 
 		try {
 			$this->deleteIBlockType('info');
 
 			$logger->log('IBlock type "info" has been deleted');
-		} catch (\Quetzal\Exception\Data\Migration\MigrationException $exception) {
+		} catch (\Your\Exception\Data\Migration\MigrationException $exception) {
 			$logger->log(sprintf('ERROR: %s', $exception->getMessage()));
 		}
 	}
