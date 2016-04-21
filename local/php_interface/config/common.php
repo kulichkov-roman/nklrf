@@ -1,4 +1,6 @@
-<?php
+<?
+use Bitrix\Main\Loader;
+
 /**
  * Общая конфигурация для всех сайтов и окружений
  */
@@ -27,4 +29,4 @@
 	)
 );
 
-\Bitrix\Main\Loader::includeModule('tpic');
+Loader::includeModule('fairytale.tpic');
