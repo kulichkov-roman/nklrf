@@ -1,19 +1,19 @@
 <?php
 
-namespace Momentum;
+namespace KLRF;
 
 /**
- * Автозагрузчик для пространства Momentum
+ * Автозагрузчик для пространства Your
  *
  * Class AutoLoader
  *
  * @author Roman Kulichkov <roman@kulichkov.pro>
  *
- * @package Momentum
+ * @package Your
  */
 class AutoLoader
 {
-	const PROJECT_NAMESPACE = 'Momentum';
+	const PROJECT_NAMESPACE = 'KLRF';
 
 	static private $recursiveSearch = true;
 
