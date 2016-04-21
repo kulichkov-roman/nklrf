@@ -1,36 +1,56 @@
-<?
-namespace Your\Helper;
+<?php
+
+namespace ft;
+namespace KLRF\Helper;
 
 /**
  * Хелпер для работы с изображениями
  *
- * Class UserHelper
+ * Class ImagesHelper
  *
- * @package Your\Helper
+ * @package KLRF\Helper
  *
  * @author Kulichkov Roman <roman@kulichkov.pro>
  */
-class ResizerITC
+class ResizeTpic
 {
-    public $params;
+    protected static $arParams;
 
-    public function __construct($params)
+    public function __construct($arParams)
     {
-        //self::$params = $params;
+        self::$arParams = $arParams;
     }
 
-    public static function GetResizeImage()
+    public function resizeImages()
     {
+        if(self::$arParams['ID'] > 0)
+        {
+            if(
+                self::$arParams['MODE']  <> ''
+            )
+            {
+                $rs = new \ft\CTPic();
+                $src = $rs->resizeImage(
+                    self::$arParams['ID'],
+                    self::$arParams['MODE'],
+                    self::$arParams['WIDTH']
+                );
 
+                return $src;
+            }
+            else
+            {
+                throw new \Exception('Не установлен режим работы tpic');
+            }
+        }
+        else
+        {
+            throw new \Exception('Не указан ID изображения');
+        }
     }
 }
 
-class ResizerTRPIC
-{
-
-}
-
-class ResizerFactory
+class ResizeFactory
 {
     /**
      * @param $resizerType
@@ -39,26 +59,35 @@ class ResizerFactory
      * @return mixed
      * @throws \Exception
      */
-    public static function build($resizerType, $params)
+    public static function build($resizeType, $arParams)
     {
-        $resizer = "Resizer" . ucfirst($resizerType);
+        $resize = '\KLRF\Helper\Resize' . ucfirst($resizeType);
 
-        if (class_exists($resizer))
+        if (class_exists($resize))
         {
-            return new $resizer($params);
+            return new $resize($arParams);
         }
         else
         {
-            throw new \Exception("Неверный тип ресайзера");
+            throw new \Exception('Неверный тип ресайзера');
         }
     }
 }
 
-class ImagesHelper
+class ImageHelper
 {
-    public static function GetResizeImages($resizerType, $params)
+    /**
+     * @param $resizeType
+     * @param $arParams
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function getResizeImages($resizeType, $arParams)
     {
-        $objResizer = ResizerFactory::build($resizerType);
+        $objResize = ResizeFactory::build($resizeType, $arParams);
+
+        return $objResize->resizeImages();
     }
 }
 ?>
