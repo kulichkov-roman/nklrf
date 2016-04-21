@@ -28,8 +28,7 @@ class ResizeTpic
                 self::$arParams['MODE']  <> ''
             )
             {
-                $rs = new \ft\CTPic();
-                $src = $rs->resizeImage(
+                $src = \ft\CTPic::resizeImage(
                     self::$arParams['ID'],
                     self::$arParams['MODE'],
                     self::$arParams['WIDTH']
