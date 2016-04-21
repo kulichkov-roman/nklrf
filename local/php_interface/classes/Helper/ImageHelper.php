@@ -1,6 +1,5 @@
 <?php
 
-namespace ft;
 namespace KLRF\Helper;
 
 /**
