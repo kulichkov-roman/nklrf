@@ -2,7 +2,7 @@
 require_once 'vendor/YourTools/bootstrap.php';
 require_once 'classes/AutoLoader.php';
 
-\spl_autoload_register('\Your\AutoLoader::autoLoad');
+\spl_autoload_register('\KLRF\AutoLoader::autoLoad');
 
 $environment = \Your\Environment\EnvironmentManager::getInstance();
 
